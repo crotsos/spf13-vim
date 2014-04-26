@@ -1,0 +1,2 @@
+Bundle 'Shougo/vimshell.vim'
+Bundle "OmniCppComplete"
