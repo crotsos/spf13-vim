@@ -313,3 +313,11 @@ set wildignore+=*.toc
 " "
 " "set rtp+=/home/cr409/.opam/4.00.1/share/ocamlmerlin/vim
 " "set rtp+=/home/cr409/.opam/4.00.1/share/ocamlmerlin/vimbufsync
+"
+"
+let g:pencil#wrapModeDefault = 'hard'   " or 'soft'
+
+augroup pencil
+    autocmd!
+    autocmd FileType text call pencil#init({'wrap': 'hard',  'autoformat': 1})
+augroup END"
