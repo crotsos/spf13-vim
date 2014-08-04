@@ -1,0 +1,3 @@
+Bundle 'Shougo/vimshell.vim'
+Bundle "OmniCppComplete"
+Bundle "reedes/vim-pencil"

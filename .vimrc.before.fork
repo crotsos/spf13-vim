@@ -1,0 +1,323 @@
+" "syntax on
+" "set lines=60 columns=200
+" "set textwidth=80
+" "
+" "" spelling
+" "" Enable spell check for text files
+" "autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en_gb
+" "autocmd BufNewFile,BufRead *.tex setlocal spell spelllang=en_gb
+" "
+" "set nocompatible	" not compatible with the old-fashion vi mode
+" "set bs=2		" allow backspacing over everything in insert mode
+" "set history=50		" keep 50 lines of command line history
+" "set ruler		" show the cursor position all the time
+" "set autoread		" auto read when file is changed from outside
+" "
+" "
+" "filetype on           " Enable filetype detection
+" "filetype indent on    " Enable filetype-specific indenting
+" "filetype plugin on    " Enable filetype-specific plugins
+" "
+" "
+" "" auto reload vimrc when editing it
+" "autocmd! bufwritepost .vimrc source ~/.vimrc
+" "
+" "" Enable automatic title setting for terminals
+" "set title
+" "set titleold="Terminal"
+set titlestring=%F\ -\ Vim
+" "
+" "" Activate a permanent ruler 
+" "set ruler
+" "
+" "" NERDtree on <leader>t
+" "nmap <C-i> :NERDTreeToggle<CR>
+" "let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$','\.o$']
+" "
+" "
+" "syntax on		" syntax highlight
+" "" set term=builtin_ansi   " Make arrow and other keys work
+" "set hlsearch		" search highlighting
+" "set autoindent		" auto indentation
+" "set incsearch		" incremental search
+" "set nobackup		" no *~ backup files
+" "set ignorecase		" ignore case when searching
+" "set smartcase		" ignore case if search pattern is 
+" "                        " all lowercase,case-sensitive otherwise
+" "set smarttab		" insert tabs on the start of a line according to context
+" "
+" "" disable sound on errors
+" "set noerrorbells
+" "set novisualbell
+" "set tm=500
+" "
+" "" TAB setting{
+" "   set expandtab        "replace <TAB> with spaces
+" "   set softtabstop=2 
+" "   set shiftwidth=2 
+" "
+" "   au FileType Makefile set noexpandtab
+" ""}      							
+" "
+" "" status line {
+" "set laststatus=2
+" "set statusline=\ %{HasPaste()}%<%-15.25(%f%)%m%r%h\ %w\ \ 
+" "set statusline+=\ \ \ [%{&ff}/%Y] 
+" "set statusline+=\ \ \ %<%20.30(%{hostname()}:%{CurDir()}%)\ 
+" "set statusline+=%=%-10.(%l,%c%V%)\ %p%%/%L
+" "
+" "function! CurDir()
+" "    let curdir = substitute(getcwd(), $HOME, "~", "")
+" "    return curdir
+" "endfunction
+" "
+" "function! HasPaste()
+" "    if &paste
+" "        return '[PASTE]'
+" "    else
+" "        return ''
+" "    endif
+" "endfunction
+" "
+" ""}
+" "
+" ""--------------------------------------------------------------------------- 
+" "" PLUGIN SETTINGS
+" ""--------------------------------------------------------------------------- 
+" "
+" ""}
+" "
+" "" --- AutoClose - Inserts matching bracket, paren, brace or quote 
+" "" fixed the arrow key problems caused by AutoClose
+" "if !has("gui_running")	
+" "   set term=linux
+" "   imap OA <ESC>ki
+" "   imap OB <ESC>ji
+" "   imap OC <ESC>li
+" "   imap OD <ESC>hi
+" "
+" "   nmap OA k
+" "   nmap OB j
+" "   nmap OC l
+" "   nmap OD h
+" "endif
+" "
+" "" ctags manage
+" "let Tlist_Ctags_Cmd = "/usr/bin/ctags"
+" "let Tlist_WinWidth = 50
+" "map <leader>ta :TlistToggle<cr>
+" "map <leader>bta :!/usr/local/bin/ctags -R .<CR>
+" "
+" "" --- Command-T
+" "let g:CommandTMaxHeight = 15
+" "
+" "" --- SuperTab
+" "let g:SuperTabDefaultCompletionType = "context"
+" "let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+" "let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+" "
+" "
+" "" --- EasyMotion
+" ""let g:EasyMotion_leader_key = '<Leader>m' " default is <Leader>w
+" "hi link EasyMotionTarget ErrorMsg
+" "hi link EasyMotionShade  Comment
+" "
+" "" --- SnipMate
+" "let g:snipMateAllowMatchingDot = 0
+" "
+" "" --- minibufexpl
+" "let g:miniBufExplMapWindowNavVim = 1 
+" "let g:miniBufExplMapWindowNavArrows = 0 
+" "let g:miniBufExplMapCTabSwitchBufs = 0 
+" "let g:miniBufExplModSelTarget = 0
+" "
+" "
+" ignore latex intermediate files on autocomplete
+set wildignore+=*.o
+set wildignore+=*.class
+set wildignore+=*.pdf
+set wildignore+=*._aux
+set wildignore+=*.aux
+set wildignore+=*.bbl
+set wildignore+=*.big
+set wildignore+=*.brf
+set wildignore+=*.blg
+set wildignore+=*.dvi
+set wildignore+=*.div
+set wildignore+=*.ilg
+set wildignore+=*.lof
+set wildignore+=*.log
+set wildignore+=*._log
+set wildignore+=*.nlo
+set wildignore+=*.nls
+set wildignore+=*.out
+set wildignore+=*.ps
+set wildignore+=*.tdo
+set wildignore+=*.tex.project.vim
+set wildignore+=*.toc
+" "
+" "" Disable AutoComplPop.
+" "let g:acp_enableAtStartup = 0
+" "" Use neocomplcache.
+" "let g:neocomplcache_enable_at_startup = 1
+" "" Use smartcase.
+" "let g:neocomplcache_enable_smart_case = 1
+" "" Set minimum syntax keyword length.
+" "let g:neocomplcache_min_syntax_length = 3
+" "let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+" "
+" "" Enable heavy features.
+" "" Use camel case completion.
+" ""let g:neocomplcache_enable_camel_case_completion = 1
+" "" Use underbar completion.
+" ""let g:neocomplcache_enable_underbar_completion = 1
+" "
+" "" Define dictionary.
+" "let g:neocomplcache_dictionary_filetype_lists = {
+" "    \ 'default' : '',
+" "    \ 'vimshell' : $HOME.'/.vimshell_hist',
+" "    \ 'scheme' : $HOME.'/.gosh_completions'
+" "        \ }
+" "
+" "" Define keyword.
+" "if !exists('g:neocomplcache_keyword_patterns')
+" "    let g:neocomplcache_keyword_patterns = {}
+" "endif
+" "let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+" "
+" "" Plugin key-mappings.
+" "inoremap <expr><C-g>     neocomplcache#undo_completion()
+" "inoremap <expr><C-l>     neocomplcache#complete_common_string()
+" "
+" "" Recommended key-mappings.
+" "" <CR>: close popup and save indent.
+" "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" "function! s:my_cr_function()
+" "  return neocomplcache#smart_close_popup() . "\<CR>"
+" "  " For no inserting <CR> key.
+" "  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+" "endfunction
+" "" <TAB>: completion.
+" "inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" "" <C-h>, <BS>: close popup and delete backword char.
+" "inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+" "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+" "inoremap <expr><C-y>  neocomplcache#close_popup()
+" "inoremap <expr><C-e>  neocomplcache#cancel_popup()
+" "" Close popup by <Space>.
+" ""inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
+" "
+" "" For cursor moving in insert mode(Not recommended)
+" ""inoremap <expr><Left>  neocomplcache#close_popup() . "\<Left>"
+" ""inoremap <expr><Right> neocomplcache#close_popup() . "\<Right>"
+" ""inoremap <expr><Up>    neocomplcache#close_popup() . "\<Up>"
+" ""inoremap <expr><Down>  neocomplcache#close_popup() . "\<Down>"
+" "" Or set this.
+" ""let g:neocomplcache_enable_cursor_hold_i = 1
+" "" Or set this.
+" ""let g:neocomplcache_enable_insert_char_pre = 1
+" "
+" "" AutoComplPop like behavior.
+" ""let g:neocomplcache_enable_auto_select = 1
+" "
+" "" Shell like behavior(not recommended).
+" ""set completeopt+=longest
+" ""let g:neocomplcache_enable_auto_select = 1
+" ""let g:neocomplcache_disable_auto_complete = 1
+" ""inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+" "
+" "" Enable omni completion.
+" "autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" "autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" "autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" "autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" "
+" "
+" "" Enable heavy omni completion.
+" "if !exists('g:neocomplcache_omni_patterns')
+" "  let g:neocomplcache_omni_patterns = {}
+" "endif
+" "let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+" "let g:neocomplcache_omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+" "let g:neocomplcache_omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" "
+" "if !exists('g:neocomplcache_force_omni_patterns')
+" "  let g:neocomplcache_force_omni_patterns = {}
+" "endif
+" "let g:neocomplcache_force_omni_patterns.ocaml = '[^. *\t]\.\w*\|\h\w*|#'
+" "
+" "" For perlomni.vim setting.
+" "" https://github.com/c9s/perlomni.vim
+" "let g:neocomplcache_omni_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+" "
+" "if v:version >= 700
+" "  set omnifunc=syntaxcomplete#Complete " override built-in C omnicomplete with C++ OmniCppComplete plugin
+" "  let OmniCpp_GlobalScopeSearch   = 1
+" "  let OmniCpp_DisplayMode         = 1
+" "  let OmniCpp_ShowScopeInAbbr     = 0 "do not show namespace in pop-up
+" "  let OmniCpp_ShowPrototypeInAbbr = 1 "show prototype in pop-up
+" "  let OmniCpp_ShowAccess          = 1 "show access in pop-up
+" "  let OmniCpp_SelectFirstItem     = 1 "select first item in pop-up
+" "  set completeopt=menuone,menu,longest
+" "  let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+" "  highlight   clear
+" "  highlight   Pmenu         ctermfg=0 ctermbg=2
+" "  highlight   PmenuSel      ctermfg=0 ctermbg=7
+" "  highlight   PmenuSbar     ctermfg=7 ctermbg=0
+" "  highlight   PmenuThumb    ctermfg=0 ctermbg=7
+" "endif
+" "
+" "function! UpdateTags()
+" "  execute ":!ctags -R --languages=C++ --c++-kinds=+p --fields=+iaS --extra=+q ./"
+" "  echohl StatusLine | echo "C/C++ tag updated" | echohl None
+" "endfunction
+" "nnoremap <F4> :call UpdateTags()
+" "
+" "let g:syntastic_ocaml_checkers=['merlin']
+" "
+" "noremap <C-J>     <C-W>j
+" "noremap <C-K>     <C-W>k
+" "noremap <C-H>     <C-W>h
+" "noremap <C-L>     <C-W>l
+" "
+" "set rtp+=~/.vim/bundle/vundle/
+" "call vundle#rc()
+" "
+" "Bundle 'gmarik/vundle'
+" "Bundle 'tpope/vim-pathogen'
+" "Bundle 'altercation/vim-colors-solarized' 
+" "Bundle 'tpope/vim-fugitive' 
+" "Bundle 'scrooloose/nerdtree'
+" "Bundle 'tpope/vim-surround'
+" "Bundle 'godlygeek/tabular'
+" "Bundle 'tpope/vim-unimpaired'
+" "Bundle 'tpope/vim-endwise'
+" "Bundle 'scrooloose/syntastic'
+" "Bundle 'mattn/gist-vim'
+" "Bundle 'vim-scripts/grep.vim'
+" "Bundle 'tpope/vim-commentary'
+" "Bundle 'fholgado/minibufexpl.vim'
+" "Bundle "OmniCppComplete"
+" "Bundle 'vim-scripts/c.vim'
+" "Bundle 'vim-scripts/vim-diff'
+" "Bundle 'ciaranm/detectindent'
+" "Bundle 'Shougo/vimshell.vim'
+" "Bundle "Shougo/neocomplcache"
+" "Bundle "tpope/vim-sensible"
+" "Bundle 'taglist.vim'
+" "Bundle 'surround.vim'
+" "Bundle 'snipMate'
+" "
+" "autocmd FileType ocaml source /home/cr409/.opam/4.00.1/share/typerex/ocp-indent/ocp-indent.vim
+" "
+" "set rtp+=/home/cr409/.opam/4.00.1/share/ocamlmerlin/vim
+" "set rtp+=/home/cr409/.opam/4.00.1/share/ocamlmerlin/vimbufsync
+"
+"
+let g:pencil#wrapModeDefault = 'hard'   " or 'soft'
+
+augroup pencil
+    autocmd!
+    autocmd FileType text call pencil#init({'wrap': 'hard',  'autoformat': 1})
+augroup END"
