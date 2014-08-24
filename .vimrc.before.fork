@@ -25,6 +25,10 @@
 " "" Enable automatic title setting for terminals
 " "set title
 " "set titleold="Terminal"
+
+let t_Co=16
+let g:solarized_termcolors=16
+
 set titlestring=%F\ -\ Vim
 " "
 " "" Activate a permanent ruler 
